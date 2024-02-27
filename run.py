@@ -39,7 +39,7 @@ database = PGDatabase(
 )
 
 for i, row in sales_df.iterrows():  # {datetime.strptime(row['dt'], '%m/%d/%Y')
-    query = f"insert into sales values ('{row['dt']}', '{row['company']}', '{row['transaction_type']}', {row['amount']})"
+    query = f"insert into sales values ('{datetime.strptime(row['dt'], '%d-%m-%Y')}', '{row['company']}', '{row['transaction_type']}', {row['amount']})"
     database.post(query)
     print(query)
 
