@@ -19,8 +19,8 @@ DATABASE_CREDS = config["Database"]
 sales_df = pd.DataFrame()
 if os.path.exists(SALES_PATH):
     sales_df = pd.read_csv(SALES_PATH)
-    print(sales_df)
-    # os.remove(SALES_PATH)
+    # print(sales_df)
+    os.remove(SALES_PATH)
 
 historical_d = {}
 
@@ -30,7 +30,7 @@ for company in COMPANIES:
         start_date=(datetime.today() - timedelta(days=1)).strftime("%m/%d/%Y"),
         end_date=datetime.today().strftime("%m/%d/%Y"),
     ).reset_index()
-    print(historical_d[company])
+    # print(historical_d[company])
 
 
 database = PGDatabase(
