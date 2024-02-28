@@ -3,9 +3,12 @@ from random import randint
 
 import pandas as pd
 import configparser
+import os
+
+dirname = os.path.dirname(__file__)
 
 config = configparser.ConfigParser()
-config.read("config.ini")
+config.read(os.path.join(dirname, "config.ini"))
 
 COMPANIES = eval(config["Companies"]["COMPANIES"])
 
